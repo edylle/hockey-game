@@ -25,7 +25,7 @@ public class HomeController {
 		mv.addObject("attentions", attentionService.getAllVO());
 
 		// this is just a test
-		template.convertAndSend("/attention-client", new AttentionVO(attentionService.findById(1L)));
+		// template.convertAndSend("/attention-client", new AttentionVO(attentionService.findById(1L)));
 
 		return mv;
 	}
