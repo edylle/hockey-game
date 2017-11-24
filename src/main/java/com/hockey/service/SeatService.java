@@ -17,6 +17,10 @@ public class SeatService {
 	@Autowired
 	private SeatRepository seatRepository;
 
+	public Seat findById(String username) {
+		return seatRepository.findOne(username);
+	}
+
 	public List<SeatNumberVO> listSeatNumberVO() {
 		List<SeatNumberVO> result = new ArrayList<>();
 		List<Seat> bdResult = seatRepository.findAll();
@@ -34,11 +38,12 @@ public class SeatService {
 
 		return result;
 	}
-	
-	public Seat updateNotificationBlock(Seat seat) {
-		
+
+	public Seat invertNotificationStatusFrom(Seat seat) {
+		if (seat == null)
+			return null;
+
 		seat.setReceiveNotification(!seat.getReceiveNotification());
-		
 		return seatRepository.save(seat);
 	}
 

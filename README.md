@@ -64,3 +64,6 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 	}
 ]
 ```
+
+##### 2. POST invert notification status
+	1. URL (POST): http://server_ip:server_port/hockey/app/invert-notification-status
