@@ -34,5 +34,12 @@ public class SeatService {
 
 		return result;
 	}
+	
+	public Seat updateNotificationBlock(Seat seat) {
+		
+		seat.setReceiveNotification(!seat.getReceiveNotification());
+		
+		return seatRepository.save(seat);
+	}
 
 }
