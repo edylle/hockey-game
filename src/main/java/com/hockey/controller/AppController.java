@@ -17,7 +17,12 @@ public class AppController {
 	private SeatService seatService;
 
 	@RequestMapping(value = "/seat-numbers", method = RequestMethod.GET)
-	ResponseEntity<?> allSeatsSimple() {
-		return new ResponseEntity<>(seatService.listSeatSimple(), HttpStatus.OK);
+	ResponseEntity<?> seatNumber() {
+		return new ResponseEntity<>(seatService.listSeatNumberVO(), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/seat-ranking", method = RequestMethod.GET)
+	ResponseEntity<?> seatRanking() {
+		return new ResponseEntity<>(seatService.listSeatRankingVO(), HttpStatus.OK);
 	}
 }

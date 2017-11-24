@@ -15,7 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Table(name = "SEAT")
 public class Seat implements Serializable {
 
-	private static final long serialVersionUID = -5784063606618892093L;
+	private static final long serialVersionUID = 1057467157538827448L;
+
 	private static final BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
 
 	@Id
@@ -35,11 +36,15 @@ public class Seat implements Serializable {
 	@Column(name = "POINTS", length = 6)
 	private Integer points;
 
-	public Seat() {
+	@Column(name = "RECEIVE_NOTIFICATION")
+	private Boolean receiveNotification;
 
+	public Seat() {
+		receiveNotification = true;
 	}
 
 	public Seat(String username, String password) {
+		this();
 		this.username = username;
 		setPassword(password);
 	}
@@ -100,6 +105,14 @@ public class Seat implements Serializable {
 
 	public void setPoints(Integer points) {
 		this.points = points;
+	}
+
+	public Boolean getReceiveNotification() {
+		return receiveNotification;
+	}
+
+	public void setReceiveNotification(Boolean receiveNotification) {
+		this.receiveNotification = receiveNotification;
 	}
 
 }

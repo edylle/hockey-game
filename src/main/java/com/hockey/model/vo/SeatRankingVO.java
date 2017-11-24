@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.hockey.model.entity.Seat;
 
 @JsonInclude(Include.NON_EMPTY)
-public class SeatSimpleVO implements Serializable {
+public class SeatRankingVO implements Serializable {
 
-	private static final long serialVersionUID = 6313983904874082591L;
+	private static final long serialVersionUID = -1662182936488520153L;
 
 	private Seat seat;
 
-	public SeatSimpleVO(Seat seat) {
+	public SeatRankingVO(Seat seat) {
 		if (seat == null) {
 			throw new IllegalArgumentException();
 		}
@@ -25,4 +25,11 @@ public class SeatSimpleVO implements Serializable {
 		return seat.getUsername();
 	}
 
+	public String getFanName() {
+		return seat.getFanName();
+	}
+
+	public Integer getPoints() {
+		return seat.getPoints();
+	}
 }

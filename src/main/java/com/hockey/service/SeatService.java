@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hockey.model.entity.Seat;
-import com.hockey.model.vo.SeatSimpleVO;
+import com.hockey.model.vo.SeatNumberVO;
+import com.hockey.model.vo.SeatRankingVO;
 import com.hockey.repository.SeatRepository;
 
 @Service
@@ -16,11 +17,20 @@ public class SeatService {
 	@Autowired
 	private SeatRepository seatRepository;
 
-	public List<SeatSimpleVO> listSeatSimple() {
-		List<SeatSimpleVO> result = new ArrayList<>();
+	public List<SeatNumberVO> listSeatNumberVO() {
+		List<SeatNumberVO> result = new ArrayList<>();
 		List<Seat> bdResult = seatRepository.findAll();
 
-		bdResult.forEach(r -> result.add(new SeatSimpleVO(r)));
+		bdResult.forEach(r -> result.add(new SeatNumberVO(r)));
+
+		return result;
+	}
+
+	public List<SeatRankingVO> listSeatRankingVO() {
+		List<SeatRankingVO> result = new ArrayList<>();
+		List<Seat> bdResult = seatRepository.findAllByOrderByPointsDesc();
+
+		bdResult.forEach(r -> result.add(new SeatRankingVO(r)));
 
 		return result;
 	}
