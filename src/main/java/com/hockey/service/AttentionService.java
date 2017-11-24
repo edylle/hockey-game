@@ -3,7 +3,6 @@ package com.hockey.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +12,7 @@ import com.hockey.model.entity.Seat;
 import com.hockey.model.enumeration.AttentionType;
 import com.hockey.model.vo.AttentionVO;
 import com.hockey.repository.AttentionRepository;
+import com.hockey.utils.DateUtils;
 import com.hockey.utils.UserUtils;
 
 @Service
@@ -60,7 +60,7 @@ public class AttentionService {
 			att.setSeat(UserUtils.getUser());
 			att.setAttentionType(attention.getAttentionType());
 			att.setMessage(attention.getMessage());
-			att.setDateCreated(DateUtils. (attention.getDateCreated()));
+			att.setDateCreated(DateUtils.convertStringToDate(attention.getDateCreated(), "dd/MM/yyyy"));
 			
 			return attentionRepository.save(att);
 		} else {
