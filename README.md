@@ -11,7 +11,6 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 	2. JSON response
 	
 ```
-#!javascript
 [
 	{
 		"available": true,
@@ -42,7 +41,6 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 	2. JSON response
 	
 ```
-#!javascript
 [
 	{
 		"points": 100,
