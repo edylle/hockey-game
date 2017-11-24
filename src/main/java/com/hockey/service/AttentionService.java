@@ -18,6 +18,10 @@ public class AttentionService {
 	@Autowired
 	private AttentionRepository attentionRepository;
 
+	public Attention findById(Long id) {
+		return attentionRepository.findOne(id);
+	}
+
 	public List<AttentionVO> getAllVO() {
 		List<AttentionVO> result = new ArrayList<>();
 		List<Attention> bdResult = attentionRepository.findAllByOrderByDateCreatedAsc();
