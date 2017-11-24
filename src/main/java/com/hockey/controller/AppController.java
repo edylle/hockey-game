@@ -30,7 +30,8 @@ public class AppController {
 
 	@PostMapping("/invert-notification-status")
 	public ResponseEntity<?> changeBlockNotification() {
-		seatService.invertNotificationStatusFrom(seatService.findById(UserUtils.getUser().getUsername()));
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(
+				seatService.invertNotificationStatusFrom(seatService.findById(UserUtils.getUser().getUsername())),
+				HttpStatus.OK);
 	}
 }
