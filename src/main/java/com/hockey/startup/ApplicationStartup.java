@@ -8,7 +8,10 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import com.hockey.model.entity.Attention;
 import com.hockey.model.entity.Seat;
+import com.hockey.model.enumeration.AttentionType;
+import com.hockey.repository.AttentionRepository;
 import com.hockey.repository.SeatRepository;
 
 @Component
@@ -16,6 +19,8 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
 	@Autowired
 	private SeatRepository seatRepository;
+	@Autowired
+	private AttentionRepository attentionRepository;
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent arg0) {
@@ -34,6 +39,25 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 			s.setPoints(n.nextInt(100 - 1 + 1) + 1);
 
 			seatRepository.save(s);
+
+			Attention a = new Attention();
+			a.setSeat(s);
+
+			AttentionType at;
+
+			if (i % 2 == 0) {
+				at = AttentionType.FILM;
+			} else {
+				at = AttentionType.MESSAGE;
+			}
+
+			a.setAttentionType(at);
+
+			if (AttentionType.MESSAGE.equals(a.getAttentionType())) {
+				a.setMessage("Message for seat " + i);
+			}
+
+			attentionRepository.save(a);
 		}
 
 		System.out.println(--i + " MOCK SEATS CREATED");
