@@ -10,8 +10,33 @@
 
 	<body>
 
-		<h1>Under Construction...</h1>
-		<h3>plase come back later</h3>
+		<div class="container container-content">
+
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="text-left" th:text="#{label.seat.number}"></th>
+							<th class="text-left" th:text="#{label.seat.fan.name}"></th>
+							<th class="text-left" th:text="#{label.message}"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="attention : ${attentions}">
+							<td class="text-left align-middle" th:text="${attention.seatNumber}"></td>
+							<td class="text-left align-middle" th:text="${attention.seatFanName}"></td>
+							<td class="text-left align-middle" th:text="${attention.message}"></td>
+						</tr>
+
+						<tr th:if="${#lists.isEmpty(attentions)}">
+							<td colspan="5" th:text="#{message.no.attentions.found}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
 
 		<script th:src="@{/js/vendor/jquery-3.2.1.min.js}"></script>
 		<script th:src="@{/js/main.js}"></script>
