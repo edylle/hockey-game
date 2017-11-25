@@ -43,8 +43,16 @@ function disconnectAttention() {
 var idAttention;
 var accept;
 $('#modal-accept-attention').on('show.bs.modal', function(event) {
-	idAttention = $(event.relatedTarget).data('id');
-	accept = $(event.relatedTarget).data('accept');
+	idAttention = $(event.relatedTarget).data("id");
+	accept = $(event.relatedTarget).data("accept");
+
+	var bodySpanData = "<p>" + $(event.relatedTarget).data("accept-warning") + "</p>";
+	
+	if ($(event.relatedTarget).data("type") == "MESSAGE") {
+		bodySpanData += "<p><strong>Message: </strong><i>\"" + $(event.relatedTarget).data("message") + "\"</i></p>";
+	}
+
+	$(this).find('.modal-body span').html(bodySpanData);
 });
 
 // AJAX

@@ -17,3 +17,20 @@
 	padding: 16px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)
 }
+
+.div-row-attentions {
+	border-bottom: 1px solid lightgrey;
+	height: 50px;
+}
+
+.middle-row-attentions-img {
+	line-height: 2.8;
+}
+
+.middle-row-attentions-txt {
+	line-height: 2.9;
+}
+
+.middle-row-attentions-check {
+	line-height: 3;
+}

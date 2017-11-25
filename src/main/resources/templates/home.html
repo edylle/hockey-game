@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/font-awesome-4.7.0/css/font-awesome.min.css}"/>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/jquery.growl.css}"/>
+
+		<script th:src="@{/js/images.js}"></script>
 	</head>
 
 	<body>
@@ -26,16 +28,23 @@
 
 				<div class="col-xl-4 col-lg-4 col-sm-12">
 					<div class="div-wrapper-attention-list">
-						<div class="row" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}">
-							<div class="col-2">
-								<p th:text="${attention.seatNumber}"></p>
+						<div class="row div-row-attentions" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}">
+							<div class="col-2 text-center middle-row-attentions-img">
+								<img src="../img/user1.png" onload="this.onload=null; this.src=getRandomUser();" width="30" />
 							</div>
-							<div class="col-8">
-								<p th:text="${attention.message}"></p>
+							<div class="col-8 text-left middle-row-attentions-txt">
+								<p th:if="${attention.attentionType eq 'MESSAGE'}"
+								   th:utext="#{label.message.from.seat(${attention.seatNumber})}"></p>
+
+								<p th:if="${attention.attentionType eq 'FILM'}"
+								   th:utext="#{label.film.fan.seat(${attention.seatNumber})}"></p>
 							</div>
-							<div class="col-2">
+							<div class="col-2 text-center middle-row-attentions-check">
 								<a class="text-success cursor-pointer" data-toggle="modal" data-target="#modal-accept-attention"
-								   th:attr="data-id=${attention.id}, data-accept=true"
+								   th:attr="data-id=${attention.id}, data-accept=true,
+								            data-type=${attention.attentionType},
+								            data-accept-warning=#{message.accept.attention(${attention.seatNumber})},
+								            data-message=${attention.message}"
 								   th:title="#{label.accept.attention}" rel="tooltip" data-placement="top">
 	
 									<i class="fa fa-check" aria-hidden="true"></i>
@@ -59,7 +68,7 @@
 				      </div>
 
 				      <div class="modal-body">
-				      	<p th:text="#{message.accept.attention}"></p>
+				      	<span></span>
 				      </div>
 
 				      <div class="modal-footer">
