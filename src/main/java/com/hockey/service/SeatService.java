@@ -1,5 +1,6 @@
 package com.hockey.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,14 @@ public class SeatService {
 
 		seat.setReceiveNotification(!seat.getReceiveNotification());
 		return seatRepository.save(seat);
+	}
+
+	public Long findSeatBalance(String seat) {
+		if (seat == null) {
+			return null;
+		}		
+		BigDecimal balance = seatRepository.findSeatBalance(seat); 
+		return balance != null ? balance.longValue() : 0L; 
 	}
 
 }

@@ -6,11 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hockey.model.dto.AttentionNewDto;
 import com.hockey.model.entity.Attention;
 import com.hockey.model.entity.Seat;
 import com.hockey.model.enumeration.AttentionType;
 import com.hockey.model.vo.AttentionVO;
 import com.hockey.repository.AttentionRepository;
+import com.hockey.utils.DateUtils;
+import com.hockey.utils.UserUtils;
 
 @Service
 public class AttentionService {
@@ -55,6 +58,21 @@ public class AttentionService {
 		if (attention != null) {
 			attention.setAccepted(accepted);
 			attentionRepository.save(attention);
+		}
+	}
+
+	public Attention attentionNew(AttentionNewDto attention) {
+		if (attention != null) {
+			Attention att = new Attention();
+
+			att.setSeat(UserUtils.getUser());
+			att.setAttentionType(attention.getAttentionType());
+			att.setMessage(attention.getMessage());
+			att.setDateCreated(DateUtils.convertStringToDate(attention.getDateCreated(), "dd/MM/yyyy"));
+
+			return attentionRepository.save(att);
+		} else {
+			return null;
 		}
 	}
 }
