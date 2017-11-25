@@ -23,7 +23,7 @@ import com.hockey.model.enumeration.AttentionType;
 @Table(name = "ATTENTION")
 public class Attention implements Serializable {
 
-	private static final long serialVersionUID = 3706452506129983608L;
+	private static final long serialVersionUID = -5366866177374137495L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,11 +43,15 @@ public class Attention implements Serializable {
 	@Column(name = "MESSAGE")
 	private String message;
 
+	@Column(name = "ACCEPTED")
+	private Boolean accepted;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DATE_CREATED", nullable = false)
 	private Date dateCreated;
 
 	public Attention() {
+		accepted = false;
 		dateCreated = new Date();
 	}
 
@@ -82,6 +86,14 @@ public class Attention implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Boolean getAccepted() {
+		return accepted;
+	}
+
+	public void setAccepted(Boolean accepted) {
+		this.accepted = accepted;
 	}
 
 	public Date getDateCreated() {

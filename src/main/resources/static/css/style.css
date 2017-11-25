@@ -5,3 +5,15 @@
 .container-content {
 	margin-top: 100px;
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.div-wrapper-attention-list {
+	height: 70vh;
+	overflow: scroll;
+	border: 1px solid lightgrey;
+	padding: 16px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)
+}

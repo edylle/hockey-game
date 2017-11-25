@@ -48,4 +48,13 @@ public class AttentionService {
 
 		return result;
 	}
+
+	public void acceptAttention(Long idAttention, boolean accepted) {
+		Attention attention = findById(idAttention);
+
+		if (attention != null) {
+			attention.setAccepted(accepted);
+			attentionRepository.save(attention);
+		}
+	}
 }
