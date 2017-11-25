@@ -2,7 +2,7 @@
 This project is part of the challenge from GSL Group for VanHackathon 4.0
 
 ## REST endpoints
-#####Important.: All POST requests need authentication which is AuthType Basic seatNumber:seatNumber by default.
+	Important.: All POST requests need authentication which is AuthType Basic seatNumber:seatNumber by default.
 
 ### 1. Seat
 
