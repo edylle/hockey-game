@@ -7,9 +7,9 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 
 ##### 1.1. GET seat numbers
 	1. URL (GET): http://server_ip:server_port/hockey/app/seat-numbers
-	
-	2. JSON response
-	
+
+	2. JSON response (example)
+
 ```
 [
 	{
@@ -37,9 +37,9 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 
 ##### 1.2. GET seat ranking
 	1. URL (GET): http://server_ip:server_port/hockey/app/seat-ranking
-	
-	2. JSON response
-	
+
+	2. JSON response (example)
+
 ```
 [
 	{
@@ -65,5 +65,41 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 ]
 ```
 
-##### 2. POST invert notification status
+##### 1.3. GET seat balance
+	1. URL (GET): http://server_ip:server_port/hockey/app/seat-points-balance/{username}
+
+	2. JSON response (example)
+
+```
+40
+```
+
+### 2. Notification
+
+##### 2.1. POST invert notification status
 	1. URL (POST): http://server_ip:server_port/hockey/app/invert-notification-status
+
+### 3. Attention
+
+##### 3.1. POST new attention
+	1. URL (POST): http://server_ip:server_port/hockey/app/invert-notification-status
+
+	2. JSON request body (example) (attentionType possible values: "FILM" or "MESSAGE"; "message" key is optional)
+
+```
+{
+	"attentionType": "MESSAGE",
+	"message": "Say hello to me!"
+}
+```
+
+	3. JSON response (example)
+	
+```
+{
+    "message": "Say hello to me!",
+    "id": 21,
+    "attentionType": "MESSAGE",
+    "seatNumber": "001"
+}
+```

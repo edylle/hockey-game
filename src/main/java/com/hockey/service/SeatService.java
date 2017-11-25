@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,11 +50,12 @@ public class SeatService {
 	}
 
 	public Long findSeatBalance(String seat) {
-		if (seat == null) {
+		if (StringUtils.isEmpty(seat)) {
 			return null;
-		}		
-		BigDecimal balance = seatRepository.findSeatBalance(seat); 
-		return balance != null ? balance.longValue() : 0L; 
+		}
+
+		BigDecimal balance = seatRepository.findSeatBalance(seat);
+		return balance != null ? balance.longValue() : 0L;
 	}
 
 }

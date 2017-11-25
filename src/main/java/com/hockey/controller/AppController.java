@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,11 @@ public class AppController {
 		return new ResponseEntity<>(seatService.listSeatRankingVO(), HttpStatus.OK);
 	}
 
+	@GetMapping("/seat-points-balance/{username}")
+	public ResponseEntity<?> findSeatBalance(@PathVariable String username) {
+		return new ResponseEntity<>(seatService.findSeatBalance(username), HttpStatus.OK);
+	}
+
 	@PostMapping("/invert-notification-status")
 	public ResponseEntity<?> invertNotificationStatus() {
 		return new ResponseEntity<>(seatService.invertNotificationStatusFrom(seatService.findById(UserUtils.getUser().getUsername())), HttpStatus.OK);
@@ -49,18 +55,14 @@ public class AppController {
 			Attention att = attentionService.attentionNew(attention);
 
 			if (att != null) {
-				template.convertAndSend("/attention-client", new AttentionVO(att));
-				return ResponseEntity.status(HttpStatus.CREATED).body(att);
+				AttentionVO vo = new AttentionVO(att);
+				template.convertAndSend("/attention-client", vo);
+				return ResponseEntity.status(HttpStatus.CREATED).body(vo);
 			}
 		}
 
 		return ResponseEntity.notFound().build();
 
-	}
-
-	@GetMapping("/seat-points-balance")
-	public ResponseEntity<?> findSeatBalance() {
-		return new ResponseEntity<>(seatService.findSeatBalance(UserUtils.getUser().getUsername()), HttpStatus.OK);
 	}
 
 }

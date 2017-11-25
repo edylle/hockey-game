@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.hockey.model.entity.HistoryPoints;
 
-public interface HistoryRepository extends JpaRepository<HistoryPoints, Long> {
-
+public interface HistoryPointsRepository extends JpaRepository<HistoryPoints, Long> {
 
 }

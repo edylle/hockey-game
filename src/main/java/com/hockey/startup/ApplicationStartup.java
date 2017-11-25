@@ -9,9 +9,12 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import com.hockey.model.entity.Attention;
+import com.hockey.model.entity.HistoryPoints;
 import com.hockey.model.entity.Seat;
 import com.hockey.model.enumeration.AttentionType;
+import com.hockey.model.enumeration.HistoryType;
 import com.hockey.repository.AttentionRepository;
+import com.hockey.repository.HistoryPointsRepository;
 import com.hockey.repository.SeatRepository;
 
 @Component
@@ -21,6 +24,8 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 	private SeatRepository seatRepository;
 	@Autowired
 	private AttentionRepository attentionRepository;
+	@Autowired
+	private HistoryPointsRepository historyPointsRepository;
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent arg0) {
@@ -30,13 +35,13 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 		Random n = new Random();
 		int i = 1;
 
-		for (i = 1; i <= 5; i++) {
+		for (i = 1; i <= 20; i++) {
 
 			String credentials = StringUtils.leftPad(String.valueOf(i), 3, "0");
 			Seat s = new Seat(credentials, credentials);
 
 			// generate random points ranging from 1 to 5
-			s.setPoints(n.nextInt(5 - 1 + 1) + 1);
+			s.setPoints(n.nextInt(20 - 1 + 1) + 1);
 
 			seatRepository.save(s);
 
@@ -58,6 +63,21 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 			}
 
 			attentionRepository.save(a);
+
+			HistoryPoints hp = new HistoryPoints();
+			hp.setSeat(s);
+			hp.setPoints(100L);
+			hp.setDescription("Description CREDIT" + i);
+			hp.setHistoryType(HistoryType.CREDIT);
+
+			historyPointsRepository.save(hp);
+			HistoryPoints hp1 = new HistoryPoints();
+			hp1.setSeat(s);
+			hp1.setPoints(60L);
+			hp1.setDescription("Description DEBIT" + i);
+			hp1.setHistoryType(HistoryType.DEBIT);
+			
+			historyPointsRepository.save(hp1);
 		}
 
 		System.out.println(--i + " MOCK SEATS CREATED");
