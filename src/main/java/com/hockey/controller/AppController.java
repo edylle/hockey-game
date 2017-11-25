@@ -1,6 +1,8 @@
 package com.hockey.controller;
 
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,5 +56,10 @@ public class AppController {
 
 	}
 	
+	@GetMapping("/seat-points-balance")
+	public ResponseEntity<?> findSeatBalance() {
+		
+		return new ResponseEntity<> (seatService.findSeatBalance(UserUtils.getUser().getUsername()), HttpStatus.OK); 
+	}
 	
 }
