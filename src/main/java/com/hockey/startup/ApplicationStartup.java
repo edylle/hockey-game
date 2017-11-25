@@ -30,13 +30,13 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 		Random n = new Random();
 		int i = 1;
 
-		for (i = 1; i <= 100; i++) {
+		for (i = 1; i <= 5; i++) {
 
 			String credentials = StringUtils.leftPad(String.valueOf(i), 3, "0");
 			Seat s = new Seat(credentials, credentials);
 
-			// generate random points ranging from 1 to 100
-			s.setPoints(n.nextInt(100 - 1 + 1) + 1);
+			// generate random points ranging from 1 to 5
+			s.setPoints(n.nextInt(5 - 1 + 1) + 1);
 
 			seatRepository.save(s);
 

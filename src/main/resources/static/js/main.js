@@ -25,10 +25,7 @@ function connectAttention() {
 	attentionClient.connect({}, function(frame) {
 
 		attentionClient.subscribe('/attention-client', function(msg) {
-			var attention = JSON.parse(msg.body);
-
-			// this is just a test
-			alert(attention.id + " " + attention.seatNumber);
+			addAttention(JSON.parse(msg.body));
 		});
 	});
 };

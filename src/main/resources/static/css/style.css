@@ -10,7 +10,7 @@
 	cursor: pointer;
 }
 
-.div-wrapper-attention-list {
+#div-wrapper-attention-list {
 	height: 70vh;
 	overflow: scroll;
 	border: 1px solid lightgrey;

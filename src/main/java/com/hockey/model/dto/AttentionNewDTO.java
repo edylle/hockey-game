@@ -4,22 +4,12 @@ import java.io.Serializable;
 
 import com.hockey.model.enumeration.AttentionType;
 
-public class AttentionNewDto implements Serializable{
+public class AttentionNewDTO implements Serializable {
 
-	private static final long serialVersionUID = -4956139464759547581L;
+	private static final long serialVersionUID = 2745686866429130826L;
 
-	private Long seatId;
 	private AttentionType attentionType;
 	private String message;
-	private String dateCreated;
-
-	public Long getSeatId() {
-		return seatId;
-	}
-
-	public void setSeatId(Long seatId) {
-		this.seatId = seatId;
-	}
 
 	public AttentionType getAttentionType() {
 		return attentionType;
@@ -35,14 +25,6 @@ public class AttentionNewDto implements Serializable{
 
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	public String getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(String dateCreated) {
-		this.dateCreated = dateCreated;
 	}
 
 }
