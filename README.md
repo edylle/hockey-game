@@ -43,26 +43,26 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 
 ```
 [
-	{
-		"points": 100,
-		"seatNumber": "036"
-	},
-	{
-		"points": 98,
-		"seatNumber": "063"
-	},
-	{
-		"points": 98,
-		"seatNumber": "006"
-	},
-	{
-		"points": 96,
-		"seatNumber": "076"
-	},
-	{
-		"points": 95,
-		"seatNumber": "038"
-	}
+    {
+        "seatNumber": "040",
+        "fanName": "Fan n040",
+        "points": 77
+    },
+    {
+        "seatNumber": "050",
+        "fanName": "Fan n050",
+        "points": 76
+    },
+    {
+        "seatNumber": "022",
+        "fanName": "Fan n022",
+        "points": 75
+    },
+    {
+        "seatNumber": "054",
+        "fanName": "Fan n054",
+        "points": 73
+    }
 ]
 ```
 
@@ -73,6 +73,29 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 
 ```
 40
+```
+
+##### 1.4. POST my info
+	1. URL (POST): http://server_ip:server_port/hockey/app/my-info
+
+	2. JSON response (example)
+
+```
+{
+    "username": "002",
+    "receiveNotification": true,
+    "fanName": "Fan n002",
+    "points": 78
+}
+```
+
+##### 1.5. POST logout
+	1. URL (POST): http://server_ip:server_port/hockey/app/logout
+
+	2. JSON response (example)
+
+```
+You have been successfully logged out
 ```
 
 ### 2. Notification
