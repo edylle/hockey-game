@@ -24,16 +24,12 @@ public final class DateUtils {
 		return new SimpleDateFormat(format).format(data);
 	}
 
-	public static final Date convertStringToDate(String data) {
+	public static final Date convertStringToDate(String data) throws ParseException {
 		return convertStringToDate(data, "dd/MM/yyyy");
 	}
 
-	public static final Date convertStringToDate(String data, String format) {
-		try {
+	public static final Date convertStringToDate(String data, String format) throws ParseException {
 			return new SimpleDateFormat(format).parse(data);
-		} catch (ParseException e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 	public static final boolean isValidDate(String date, String format) {

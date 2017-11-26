@@ -31,10 +31,10 @@ public class LoginDetailsService implements UserDetailsService {
 		if (user == null)
 			throw new UsernameNotFoundException("Seat " + username + " not found");
 
-		return new LoggedUser(user.getUsername(), user.getPassword(), getAuthorizations(user), user);
+		return new LoggedUser(user.getUsername(), user.getPassword(), getAuthorizations(), user);
 	}
 
-	private Set<GrantedAuthority> getAuthorizations(Seat user) {
+	private Set<GrantedAuthority> getAuthorizations() {
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(ROLE_PREFIX.concat("SEAT")));
 

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hockey.exception.PushException;
 import com.hockey.service.AttentionService;
 import com.hockey.service.PushService;
 import com.hockey.utils.Messages;
@@ -41,7 +42,7 @@ public class HomeController {
 	}
 
 	@PostMapping("send-question")
-	public @ResponseBody String sendQuestion() throws Exception {
+	public @ResponseBody String sendQuestion() throws PushException, JsonProcessingException {
 		pushService.notifyAndroid(messages.getMessageBy("message.notification.question.title"), messages.getMessageBy("message.notification.question.message"));
 		return new ObjectMapper().writeValueAsString("success");
 	}

@@ -9,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import com.hockey.exception.PushException;
+
 @Service
 public class PushService {
 
 	@Autowired
 	private Environment environment;
 	
-	public void notifyAndroid(String title, String message) throws Exception {
+	public void notifyAndroid(String title, String message) throws PushException {
 		try {
 			@SuppressWarnings("unused")
 			String jsonResponse;
@@ -60,7 +62,7 @@ public class PushService {
 				scanner.close();
 			}
 		} catch (Throwable t) {
-			throw new Exception(t);
+			throw new PushException(t.getMessage());
 		}
 	}
 }

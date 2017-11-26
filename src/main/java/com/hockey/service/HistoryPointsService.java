@@ -36,11 +36,9 @@ public class HistoryPointsService {
 
 		if (AttentionType.FILM.equals(attentionType)) {
 			hp.setDescription("Film accepted");
-			idQuestion = null;
 
 		} else if (AttentionType.MESSAGE.equals(attentionType)) {
 			hp.setDescription("Message accepted");
-			idQuestion = null;
 
 		} else {
 			hp.setDescription("Answered question " + idQuestion);

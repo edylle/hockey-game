@@ -1,8 +1,8 @@
 function addAttention(attention) {
 	var rowTitle = "";
-	if (attention.attentionType == "MESSAGE") {
+	if (attention.attentionType === "MESSAGE") {
 		rowTitle = "<span style=\"color: orange;\"><strong>Message</strong></span> from seat " + attention.seatNumber;
-	} else if (attention.attentionType == "FILM") {
+	} else if (attention.attentionType === "FILM") {
 		rowTitle = "<span style=\"color: #2eb4f3;\"><strong>Film</strong></span> seat " + attention.seatNumber;
 	}
 
@@ -36,20 +36,17 @@ function addAttention(attention) {
 	evaluateList();
 
 	$.growl.notice({title: "Attention request", message: "New attention from seat " + attention.seatNumber, location: "tr"});
-};
+}
 
 function removeAttentionsFrom(seat) {
 	$("." + seat.username).hide('slow', function(){ $("." + seat.username).remove(); evaluateList(); });
-};
+}
 
 function evaluateList() {
-	console.log("chegou");
 	if ($(".div-row-attentions")[0]) {
-		console.log("escondendo..");
 		$("#div-empty-attentions").css("display", "none");
 
 	} else {
-		console.log("mostrando..");
 		$("#div-empty-attentions").css("display", "block");
 	}
-};
+}

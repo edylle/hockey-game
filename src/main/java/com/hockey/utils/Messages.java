@@ -19,7 +19,7 @@ public class Messages {
 	private MessageSourceAccessor accessor;
 
 	@PostConstruct
-	private void init() {
+	public void init() {
 		accessor = new MessageSourceAccessor(messageSource);
 	}
 
