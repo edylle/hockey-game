@@ -12,7 +12,6 @@ import com.hockey.model.enumeration.AttentionType;
 import com.hockey.model.enumeration.HistoryType;
 import com.hockey.model.vo.HistoryPointsVO;
 import com.hockey.repository.HistoryPointsRepository;
-import com.hockey.utils.UserUtils;
 
 @Service
 public class HistoryPointsService {
@@ -29,9 +28,9 @@ public class HistoryPointsService {
 		return result;
 	}
 
-	public HistoryPoints save(HistoryType historyType, AttentionType attentionType, Long points, Long idQuestion) {
+	public HistoryPoints save(HistoryType historyType, AttentionType attentionType, Long points, Long idQuestion, Seat seat) {
 		HistoryPoints hp = new HistoryPoints();
-		hp.setSeat(UserUtils.getUser());
+		hp.setSeat(seat);
 		hp.setPoints(points);
 		hp.setHistoryType(historyType);
 

@@ -51,7 +51,7 @@ function acceptAttention() {
 	});
 
 	response.done(function(e) {
-		$("#attention-" + idAttention).hide('slow', function(){ $("#attention-" + idAttention).remove(); });
+		$("#attention-" + idAttention).hide('slow', function(){ $("#attention-" + idAttention).remove(); evaluateList(); });
 		$('#modal-accept-attention').modal('hide');
 
 		$("#img-jumbotron").remove();

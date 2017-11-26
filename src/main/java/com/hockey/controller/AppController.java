@@ -78,7 +78,7 @@ public class AppController {
 	public ResponseEntity<?> submitAnswer(@PathVariable Long idAnswer) {
 		boolean isCorrect = questionService.isCorrect(idAnswer);
 		if (isCorrect) {
-			historyPointsService.save(HistoryType.CREDIT, null, 10L, answerRepository.findOne(idAnswer).getQuestion().getId());
+			historyPointsService.save(HistoryType.CREDIT, null, 10L, answerRepository.findOne(idAnswer).getQuestion().getId(), UserUtils.getUser());
 		}
 
 		return new ResponseEntity<>(isCorrect, HttpStatus.OK);

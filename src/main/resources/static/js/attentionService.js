@@ -33,9 +33,23 @@ function addAttention(attention) {
 	currentA.data("accept-warning", "Are you sure you want to accept the attention from seat " + attention.seatNumber);
 	currentA.data("message", attention.message);
 
+	evaluateList();
+
 	$.growl.notice({title: "Attention request", message: "New attention from seat " + attention.seatNumber, location: "tr"});
 };
 
 function removeAttentionsFrom(seat) {
-	$("." + seat.username).hide('slow', function(){ $("." + seat.username).remove(); });
+	$("." + seat.username).hide('slow', function(){ $("." + seat.username).remove(); evaluateList(); });
+};
+
+function evaluateList() {
+	console.log("chegou");
+	if ($(".div-row-attentions")[0]) {
+		console.log("escondendo..");
+		$("#div-empty-attentions").css("display", "none");
+
+	} else {
+		console.log("mostrando..");
+		$("#div-empty-attentions").css("display", "block");
+	}
 };

@@ -70,7 +70,7 @@ public class AttentionService {
 			attention.setAccepted(accepted);
 			attentionRepository.save(attention);
 
-			historyPointsService.save(HistoryType.DEBIT, attention.getAttentionType(), 10L, null);
+			historyPointsService.save(HistoryType.DEBIT, attention.getAttentionType(), 10L, null, attention.getSeat());
 		}
 	}
 

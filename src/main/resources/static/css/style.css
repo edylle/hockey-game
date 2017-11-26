@@ -65,3 +65,7 @@
 	font-size: 36px;
 	color: white;
 }
+
+.display-none {
+	display: none;
+}

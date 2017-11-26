@@ -68,6 +68,10 @@
 								</a>
 							</div>
 						</div>
+
+						<div id="div-empty-attentions" th:classappend="${!#lists.isEmpty(attentions)} ? 'display-none'">
+							<p th:text="#{message.attentions.list.empty}"></p>
+						</div>
 					</div>
 				</div>
 			
