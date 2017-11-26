@@ -23,7 +23,7 @@ public class HomeController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("home");
 
-		mv.addObject("attentions", attentionService.getAllVO());
+		mv.addObject("attentions", attentionService.getVOByAccepted(false));
 
 		return mv;
 	}

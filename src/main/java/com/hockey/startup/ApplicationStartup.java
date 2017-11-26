@@ -34,14 +34,16 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
 		Random n = new Random();
 		int i = 1;
+		int max = 80;
 
-		for (i = 1; i <= 20; i++) {
+		for (i = 1; i <= max; i++) {
 
 			String credentials = StringUtils.leftPad(String.valueOf(i), 3, "0");
 			Seat s = new Seat(credentials, credentials);
+			s.setFanName("Fan n" + credentials);
 
-			// generate random points ranging from 1 to 5
-			s.setPoints(n.nextInt(20 - 1 + 1) + 1);
+			// generate random points ranging from 1 to max
+			s.setPoints(n.nextInt(max - 1 + 1) + 1);
 
 			seatRepository.save(s);
 

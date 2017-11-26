@@ -12,6 +12,8 @@ public interface AttentionRepository extends JpaRepository<Attention, Long> {
 
 	List<Attention> findAllByOrderByDateCreatedAsc();
 
+	List<Attention> findByAcceptedOrderByDateCreatedAsc(Boolean accepted);
+
 	List<Attention> findBySeatOrderByDateCreatedAsc(Seat seat);
 
 	List<Attention> findByAttentionTypeOrderByDateCreatedAsc(AttentionType attentionType);

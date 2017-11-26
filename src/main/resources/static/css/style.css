@@ -15,12 +15,12 @@
 	overflow: scroll;
 	border: 1px solid lightgrey;
 	padding: 16px;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .div-row-attentions {
 	border-bottom: 1px solid lightgrey;
-	height: 50px;
+	min-height: 50px;
 }
 
 .middle-row-attentions-img {
@@ -28,9 +28,30 @@
 }
 
 .middle-row-attentions-txt {
-	line-height: 2.9;
+	padding-top: 9px;
 }
 
 .middle-row-attentions-check {
 	line-height: 3;
+}
+
+.img-jumbotron {
+	width: 90%;
+	z-index: -1;
+}
+
+.img-user-jumbotron {
+	position: absolute;
+	width: 25%;
+	top: 24%;
+	left: 38%;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.txt-user-jumbotron {
+	position: absolute;
+	top: 56%;
+	left: 24.5%;
+	font-weight: bold;
+	margin-bottom: 60px;
 }

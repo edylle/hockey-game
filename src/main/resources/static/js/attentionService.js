@@ -3,7 +3,7 @@ function addAttention(attention) {
 	if (attention.attentionType == "MESSAGE") {
 		rowTitle = "<span style=\"color: orange;\"><strong>Message</strong></span> from seat " + attention.seatNumber;
 	} else if (attention.attentionType == "FILM") {
-		rowTitle = "<span style=\"color: #2eb4f3;\"><strong>Film</strong></span> fan at seat " + attention.seatNumber;
+		rowTitle = "<span style=\"color: #2eb4f3;\"><strong>Film</strong></span> seat " + attention.seatNumber;
 	}
 
 	var divRowAttention = '<div class="row div-row-attentions" id="attention-' + attention.id + '">'

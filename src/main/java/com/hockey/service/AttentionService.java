@@ -42,6 +42,15 @@ public class AttentionService {
 		return result;
 	}
 
+	public List<AttentionVO> getVOByAccepted(Boolean accepted) {
+		List<AttentionVO> result = new ArrayList<>();
+		List<Attention> bdResult = attentionRepository.findByAcceptedOrderByDateCreatedAsc(accepted);
+
+		bdResult.forEach(r -> result.add(new AttentionVO(r)));
+
+		return result;
+	}
+
 	public List<AttentionVO> getVOByAttentionType(AttentionType attentionType) {
 		List<AttentionVO> result = new ArrayList<>();
 		List<Attention> bdResult = attentionRepository.findByAttentionTypeOrderByDateCreatedAsc(attentionType);
