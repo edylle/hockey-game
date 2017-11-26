@@ -81,7 +81,9 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 	2. JSON request body (example) - optional
 
 ```
+{
 	"fanName": "John Doe"
+}
 ```
 
 	3. JSON response (example)
