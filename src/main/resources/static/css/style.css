@@ -55,3 +55,13 @@
 	font-weight: bold;
 	margin-bottom: 60px;
 }
+
+.div-question-mark-navbar {
+	position: absolute;
+	right: 16px;
+}
+
+.i-question-mark-navbar {
+	font-size: 36px;
+	color: white;
+}
