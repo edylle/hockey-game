@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.hockey.model.entity.HistoryPoints;
 import com.hockey.model.entity.Seat;
+import com.hockey.model.enumeration.AttentionType;
+import com.hockey.model.enumeration.HistoryType;
 import com.hockey.model.vo.HistoryPointsVO;
 import com.hockey.repository.HistoryPointsRepository;
+import com.hockey.utils.UserUtils;
 
 @Service
 public class HistoryPointsService {
@@ -26,4 +29,24 @@ public class HistoryPointsService {
 		return result;
 	}
 
+	public HistoryPoints save(HistoryType historyType, AttentionType attentionType, Long points, Long idQuestion) {
+		HistoryPoints hp = new HistoryPoints();
+		hp.setSeat(UserUtils.getUser());
+		hp.setPoints(points);
+		hp.setHistoryType(historyType);
+
+		if (AttentionType.FILM.equals(attentionType)) {
+			hp.setDescription("Film accepted");
+			idQuestion = null;
+
+		} else if (AttentionType.MESSAGE.equals(attentionType)) {
+			hp.setDescription("Message accepted");
+			idQuestion = null;
+
+		} else {
+			hp.setDescription("Answered question " + idQuestion);
+		}
+
+		return historyPointsRepository.save(hp);
+	}
 }

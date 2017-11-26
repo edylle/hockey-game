@@ -10,6 +10,7 @@ import com.hockey.model.dto.AttentionNewDTO;
 import com.hockey.model.entity.Attention;
 import com.hockey.model.entity.Seat;
 import com.hockey.model.enumeration.AttentionType;
+import com.hockey.model.enumeration.HistoryType;
 import com.hockey.model.vo.AttentionVO;
 import com.hockey.repository.AttentionRepository;
 import com.hockey.utils.UserUtils;
@@ -19,6 +20,8 @@ public class AttentionService {
 
 	@Autowired
 	private AttentionRepository attentionRepository;
+	@Autowired
+	private HistoryPointsService historyPointsService;
 
 	public Attention findById(Long id) {
 		return attentionRepository.findOne(id);
@@ -66,6 +69,8 @@ public class AttentionService {
 		if (attention != null) {
 			attention.setAccepted(accepted);
 			attentionRepository.save(attention);
+
+			historyPointsService.save(HistoryType.DEBIT, attention.getAttentionType(), 10L, null);
 		}
 	}
 

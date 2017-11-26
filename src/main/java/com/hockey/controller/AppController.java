@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hockey.model.dto.AttentionNewDTO;
 import com.hockey.model.dto.MyInfoDTO;
 import com.hockey.model.entity.Attention;
+import com.hockey.model.enumeration.HistoryType;
 import com.hockey.model.vo.AttentionVO;
 import com.hockey.model.vo.SeatVO;
+import com.hockey.repository.AnswerRepository;
 import com.hockey.service.AttentionService;
 import com.hockey.service.HistoryPointsService;
 import com.hockey.service.QuestionService;
@@ -35,6 +37,8 @@ public class AppController {
 	private AttentionService attentionService;
 	@Autowired
 	private QuestionService questionService;
+	@Autowired
+	private AnswerRepository answerRepository;
 	@Autowired
 	private SimpMessagingTemplate template;
 	@Autowired
@@ -72,7 +76,12 @@ public class AppController {
 
 	@PostMapping("/submit-answer/{idAnswer}")
 	public ResponseEntity<?> submitAnswer(@PathVariable Long idAnswer) {
-		return new ResponseEntity<>(questionService.isCorrect(idAnswer), HttpStatus.OK);
+		boolean isCorrect = questionService.isCorrect(idAnswer);
+		if (isCorrect) {
+			historyPointsService.save(HistoryType.CREDIT, null, 10L, answerRepository.findOne(idAnswer).getQuestion().getId());
+		}
+
+		return new ResponseEntity<>(isCorrect, HttpStatus.OK);
 	}
 
 	@PostMapping("/logout")

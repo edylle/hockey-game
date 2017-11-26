@@ -29,7 +29,7 @@ public class HomeController {
 	}
 
 	@PostMapping("accept-attention/{id}/{accepted}")
-	public @ResponseBody String activateUser(@PathVariable long id, @PathVariable boolean accepted) throws JsonProcessingException {
+	public @ResponseBody String acceptAttention(@PathVariable long id, @PathVariable boolean accepted) throws JsonProcessingException {
 		try {
 			attentionService.acceptAttention(id, true);
 
