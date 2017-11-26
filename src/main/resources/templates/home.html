@@ -39,7 +39,8 @@
 
 				<div class="col-xl-4 col-lg-4 col-sm-12">
 					<div id="div-wrapper-attention-list">
-						<div class="row div-row-attentions" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}">
+						<div class="row div-row-attentions" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}"
+						     th:classappend="${attention.seatNumber}">
 							<div class="col-2 text-center middle-row-attentions-img">
 								<img th:src="@{/img/user1.png}" onload="this.onload=null; this.src=getRandomUser();" width="30" />
 							</div>
@@ -101,6 +102,7 @@
 		<script th:src="@{/js/vendor/stomp.min.js}"></script>
 		<script th:src="@{/js/vendor/jquery.growl.js}"></script>
 		<script th:src="@{/js/attentionService.js}"></script>
+		<script th:src="@{/js/websocket.js}"></script>
 		<script th:src="@{/js/main.js}"></script>
 
 	</body>

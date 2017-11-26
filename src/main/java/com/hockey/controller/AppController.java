@@ -15,6 +15,7 @@ import com.hockey.model.dto.AttentionNewDTO;
 import com.hockey.model.dto.MyInfoDTO;
 import com.hockey.model.entity.Attention;
 import com.hockey.model.vo.AttentionVO;
+import com.hockey.model.vo.SeatVO;
 import com.hockey.service.AttentionService;
 import com.hockey.service.SeatService;
 import com.hockey.utils.Messages;
@@ -56,6 +57,7 @@ public class AppController {
 	@PostMapping("/logout")
 	public ResponseEntity<?> logout() {
 		seatService.logout();
+		template.convertAndSend("/remove-attentions-from", new SeatVO(UserUtils.getUser()));
 		return ResponseEntity.ok(messages.getMessageBy("message.logged.out"));
 	}
 

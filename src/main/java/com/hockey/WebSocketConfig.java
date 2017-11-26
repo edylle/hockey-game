@@ -12,8 +12,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry config) {
-		config.enableSimpleBroker("/attention-client");
-		// config.setApplicationDestinationPrefixes("/antedimento-controller");
+		config.enableSimpleBroker("/attention-client", "/remove-attentions-from");
 	}
 
 	@Override

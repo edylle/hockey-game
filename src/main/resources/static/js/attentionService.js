@@ -6,7 +6,7 @@ function addAttention(attention) {
 		rowTitle = "<span style=\"color: #2eb4f3;\"><strong>Film</strong></span> seat " + attention.seatNumber;
 	}
 
-	var divRowAttention = '<div class="row div-row-attentions" id="attention-' + attention.id + '">'
+	var divRowAttention = '<div class="row div-row-attentions ' + attention.seatNumber + '" id="attention-' + attention.id + '">'
                         + '<div class="col-2 text-center middle-row-attentions-img">'
                         + '<img src="' + getRandomUser() + '" width="30" />'
                         + '</div>'
@@ -34,4 +34,8 @@ function addAttention(attention) {
 	currentA.data("message", attention.message);
 
 	$.growl.notice({title: "Attention request", message: "New attention from seat " + attention.seatNumber, location: "tr"});
+};
+
+function removeAttentionsFrom(seat) {
+	$("." + seat.username).hide('slow', function(){ $("." + seat.username).remove(); });
 };
