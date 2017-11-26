@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hockey.model.dto.AttentionNewDTO;
+import com.hockey.model.dto.MyInfoDTO;
 import com.hockey.model.entity.Attention;
 import com.hockey.model.vo.AttentionVO;
-import com.hockey.model.vo.SeatVO;
 import com.hockey.service.AttentionService;
 import com.hockey.service.SeatService;
 import com.hockey.utils.Messages;
@@ -49,8 +49,8 @@ public class AppController {
 	}
 
 	@PostMapping("/my-info")
-	public ResponseEntity<?> myInfo() {
-		return new ResponseEntity<>(new SeatVO(seatService.findById(UserUtils.getUser().getUsername())), HttpStatus.OK);
+	public ResponseEntity<?> myInfo(@RequestBody(required = false) MyInfoDTO dto) {
+		return new ResponseEntity<>(seatService.getMyInfo(dto), HttpStatus.OK);
 	}
 
 	@PostMapping("/logout")

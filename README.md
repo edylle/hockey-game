@@ -78,7 +78,13 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 ##### 1.4. POST my info
 	1. URL (POST): http://server_ip:server_port/hockey/app/my-info
 
-	2. JSON response (example)
+	2. JSON request body (example) - optional
+
+```
+	"fanName": "John Doe"
+```
+
+	3. JSON response (example)
 
 ```
 {

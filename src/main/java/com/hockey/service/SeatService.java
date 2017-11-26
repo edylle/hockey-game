@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hockey.model.dto.MyInfoDTO;
 import com.hockey.model.entity.Seat;
 import com.hockey.model.vo.SeatNumberVO;
 import com.hockey.model.vo.SeatRankingVO;
+import com.hockey.model.vo.SeatVO;
 import com.hockey.repository.AttentionRepository;
 import com.hockey.repository.HistoryPointsRepository;
 import com.hockey.repository.SeatRepository;
@@ -64,6 +66,17 @@ public class SeatService {
 
 		BigDecimal balance = seatRepository.findSeatBalance(seat);
 		return balance != null ? balance.longValue() : 0L;
+	}
+
+	public SeatVO getMyInfo(MyInfoDTO dto) {
+		Seat seat = findById(UserUtils.getUser().getUsername());
+
+		if (dto != null && StringUtils.isNotEmpty(dto.getFanName())) {
+			seat.setFanName(dto.getFanName());
+			seat = seatRepository.save(seat);
+		}
+
+		return new SeatVO(seat);
 	}
 
 	@Transactional
