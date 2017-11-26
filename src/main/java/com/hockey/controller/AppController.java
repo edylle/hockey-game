@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.hockey.model.vo.AttentionVO;
 import com.hockey.model.vo.SeatVO;
 import com.hockey.service.AttentionService;
 import com.hockey.service.HistoryPointsService;
+import com.hockey.service.QuestionService;
 import com.hockey.service.SeatService;
 import com.hockey.utils.Messages;
 import com.hockey.utils.UserUtils;
@@ -31,6 +33,8 @@ public class AppController {
 	private HistoryPointsService historyPointsService;
 	@Autowired
 	private AttentionService attentionService;
+	@Autowired
+	private QuestionService questionService;
 	@Autowired
 	private SimpMessagingTemplate template;
 	@Autowired
@@ -59,6 +63,16 @@ public class AppController {
 	@PostMapping("/my-info")
 	public ResponseEntity<?> myInfo(@RequestBody(required = false) MyInfoDTO dto) {
 		return new ResponseEntity<>(seatService.getMyInfo(dto), HttpStatus.OK);
+	}
+
+	@PostMapping("/ask-question")
+	public ResponseEntity<?> askQuestion() {
+		return new ResponseEntity<>(questionService.getRandomQuestion(), HttpStatus.OK);
+	}
+
+	@PostMapping("/submit-answer/{idAnswer}")
+	public ResponseEntity<?> submitAnswer(@PathVariable Long idAnswer) {
+		return new ResponseEntity<>(questionService.isCorrect(idAnswer), HttpStatus.OK);
 	}
 
 	@PostMapping("/logout")

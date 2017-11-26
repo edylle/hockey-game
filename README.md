@@ -75,13 +75,26 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 40
 ```
 
-##### 1.4. POST recover seat balance
-	1. URL (POST): http://server_ip:server_port/hockey/app/seat-points-balance
+##### 1.4. POST my info
+	1. URL (POST): http://server_ip:server_port/hockey/app/my info
 
-	2. JSON response (example)
+	2. request body (example) - optional
 
 ```
-40
+{
+	"fanName": "John Doe"
+}
+```
+
+	3. JSON response (example)
+
+```
+{
+	"username": "002",
+	"receiveNotification": true,
+	"fanName": "Fan n002",
+	"points": 78
+}
 ```
 
 ##### 1.5. POST recover seat history points
@@ -145,4 +158,45 @@ You have been successfully logged out
     "attentionType": "MESSAGE",
     "seatNumber": "001"
 }
+```
+
+### 4. Quiz
+
+##### 4.1. POST ask a question
+	1. URL (POST): http://server_ip:server_port/hockey/app/ask-question
+
+	2. JSON response (example)
+
+```
+{
+    "listAnswer": [
+        {
+            "id": 13,
+            "description": "Maurice Richard"
+        },
+        {
+            "id": 14,
+            "description": "Wayne Gretzky"
+        },
+        {
+            "id": 15,
+            "description": "Bryan Trottier"
+        },
+        {
+            "id": 16,
+            "description": "Jean Béliveau"
+        }
+    ],
+    "id": 4,
+    "description": "Who has recorded the most career points in the Stanley Cup final?"
+}
+```
+
+##### 4.2. POST submit an answer
+	1. URL (POST): http://server_ip:server_port/hockey/app/submit-answer/{idAnswer}
+
+	2. JSON response (example) - true if answer is correct - false otherwise
+
+```
+true
 ```
