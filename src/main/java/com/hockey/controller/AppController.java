@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +16,7 @@ import com.hockey.model.entity.Attention;
 import com.hockey.model.vo.AttentionVO;
 import com.hockey.model.vo.SeatVO;
 import com.hockey.service.AttentionService;
+import com.hockey.service.HistoryPointsService;
 import com.hockey.service.SeatService;
 import com.hockey.utils.Messages;
 import com.hockey.utils.UserUtils;
@@ -27,6 +27,8 @@ public class AppController {
 
 	@Autowired
 	private SeatService seatService;
+	@Autowired
+	private HistoryPointsService historyPointsService;
 	@Autowired
 	private AttentionService attentionService;
 	@Autowired
@@ -44,9 +46,14 @@ public class AppController {
 		return new ResponseEntity<>(seatService.listSeatRankingVO(), HttpStatus.OK);
 	}
 
-	@GetMapping("/seat-points-balance/{username}")
-	public ResponseEntity<?> findSeatBalance(@PathVariable String username) {
-		return new ResponseEntity<>(seatService.findSeatBalance(username), HttpStatus.OK);
+	@PostMapping("/seat-points-balance")
+	public ResponseEntity<?> findSeatBalance() {
+		return new ResponseEntity<>(seatService.findSeatBalance(UserUtils.getUser().getUsername()), HttpStatus.OK);
+	}
+
+	@PostMapping("/seat-history-points")
+	public ResponseEntity<?> findSeatHistoryPoints() {
+		return new ResponseEntity<>(historyPointsService.listHistoryPointsVO(UserUtils.getUser()), HttpStatus.OK);
 	}
 
 	@PostMapping("/my-info")

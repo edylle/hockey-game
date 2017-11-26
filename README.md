@@ -66,8 +66,8 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 ]
 ```
 
-##### 1.3. GET seat balance
-	1. URL (GET): http://server_ip:server_port/hockey/app/seat-points-balance/{username}
+##### 1.3. POST recover seat balance
+	1. URL (POST): http://server_ip:server_port/hockey/app/seat-points-balance
 
 	2. JSON response (example)
 
@@ -75,29 +75,40 @@ This project is part of the challenge from GSL Group for VanHackathon 4.0
 40
 ```
 
-##### 1.4. POST my info
-	1. URL (POST): http://server_ip:server_port/hockey/app/my-info
+##### 1.4. POST recover seat balance
+	1. URL (POST): http://server_ip:server_port/hockey/app/seat-points-balance
 
-	2. JSON request body (example) - optional
-
-```
-{
-	"fanName": "John Doe"
-}
-```
-
-	3. JSON response (example)
+	2. JSON response (example)
 
 ```
-{
-    "username": "002",
-    "receiveNotification": true,
-    "fanName": "Fan n002",
-    "points": 78
-}
+40
 ```
 
-##### 1.5. POST logout
+##### 1.5. POST recover seat history points
+	1. URL (POST): http://server_ip:server_port/hockey/app/seat-history-points
+
+	2. JSON response (example)
+
+```
+[
+    {
+        "id": 1,
+        "description": "Description CREDIT1",
+        "points": 100,
+        "historyType": "CREDIT",
+        "historyDate": "26/11/2017 - 03:01"
+    },
+    {
+        "id": 2,
+        "description": "Description DEBIT1",
+        "points": 60,
+        "historyType": "DEBIT",
+        "historyDate": "26/11/2017 - 03:01"
+    }
+]
+```
+
+##### 1.6. POST logout
 	1. URL (POST): http://server_ip:server_port/hockey/app/logout
 
 	2. JSON response (example)
