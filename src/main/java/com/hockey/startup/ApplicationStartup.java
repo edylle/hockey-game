@@ -40,7 +40,10 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
 			String credentials = StringUtils.leftPad(String.valueOf(i), 3, "0");
 			Seat s = new Seat(credentials, credentials);
-			s.setFanName("Fan n" + credentials);
+			
+			if (i % 2 == 0) {
+				s.setFanName("Fan n" + credentials);
+			}
 
 			// generate random points ranging from 1 to max
 			s.setPoints(n.nextInt(max - 1 + 1) + 1);

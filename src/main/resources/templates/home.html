@@ -8,6 +8,15 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/jquery.growl.css}"/>
 
+		<script th:inline="javascript">
+			var u1 = [[@{/img/user1.png}]];
+			var u2 = [[@{/img/user2.jpg}]];
+			var u3 = [[@{/img/user3.png}]];
+			var u4 = [[@{/img/user4.png}]];
+			var u5 = [[@{/img/user5.png}]];
+			var u6 = [[@{/img/user6.png}]];
+		</script>
+
 		<script th:src="@{/js/images.js}"></script>
 	</head>
 
@@ -32,7 +41,7 @@
 					<div id="div-wrapper-attention-list">
 						<div class="row div-row-attentions" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}">
 							<div class="col-2 text-center middle-row-attentions-img">
-								<img src="../img/user1.png" onload="this.onload=null; this.src=getRandomUser();" width="30" />
+								<img th:src="@{/img/user1.png}" onload="this.onload=null; this.src=getRandomUser();" width="30" />
 							</div>
 							<div class="col-8 text-left middle-row-attentions-txt">
 								<p th:if="${attention.attentionType eq 'MESSAGE'}"

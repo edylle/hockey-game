@@ -1,4 +1,4 @@
-var usersImages = [ "../img/user1.png", "../img/user2.jpg", "../img/user3.png", "../img/user4.png", "../img/user5.png", "../img/user6.png" ];
+var usersImages = [ u1, u2, u3, u4, u5, u6 ];
 function getRandomUser() {
 	return usersImages[Math.floor(Math.random() * usersImages.length)];
 };

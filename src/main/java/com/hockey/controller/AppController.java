@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hockey.model.dto.AttentionNewDTO;
 import com.hockey.model.entity.Attention;
 import com.hockey.model.vo.AttentionVO;
+import com.hockey.model.vo.SeatVO;
 import com.hockey.service.AttentionService;
 import com.hockey.service.SeatService;
+import com.hockey.utils.Messages;
 import com.hockey.utils.UserUtils;
 
 @RestController
@@ -28,6 +30,8 @@ public class AppController {
 	private AttentionService attentionService;
 	@Autowired
 	private SimpMessagingTemplate template;
+	@Autowired
+	private Messages messages;
 
 	@GetMapping("/seat-numbers")
 	public ResponseEntity<?> seatNumber() {
@@ -42,6 +46,17 @@ public class AppController {
 	@GetMapping("/seat-points-balance/{username}")
 	public ResponseEntity<?> findSeatBalance(@PathVariable String username) {
 		return new ResponseEntity<>(seatService.findSeatBalance(username), HttpStatus.OK);
+	}
+
+	@PostMapping("/my-info")
+	public ResponseEntity<?> myInfo() {
+		return new ResponseEntity<>(new SeatVO(seatService.findById(UserUtils.getUser().getUsername())), HttpStatus.OK);
+	}
+
+	@PostMapping("/logout")
+	public ResponseEntity<?> logout() {
+		seatService.logout();
+		return ResponseEntity.ok(messages.getMessageBy("message.logged.out"));
 	}
 
 	@PostMapping("/invert-notification-status")
