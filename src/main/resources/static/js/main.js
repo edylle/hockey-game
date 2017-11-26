@@ -73,6 +73,26 @@ function acceptAttention() {
 	});
 };
 
+function sendQuestion() {
+	var response = $.ajax({
+		url : ctxHome + "/send-question",
+		type : 'POST',
+		contentType : 'application/json; charset=utf-8',
+		dataType : 'text json',
+		async: false,
+		beforeSend: function(){ showLoading(); },
+		complete: function(){ hideLoading(); }
+	});
+	
+	response.done(function(e) {
+		$.growl.notice({title: "Success", message: "The question was sent", location: "tr" });
+	});
+	
+	response.fail(function() {
+		$.growl.error({title: "Error", message: "We could not complete your request", location: "tr" });
+	});
+};
+
 // JUMBOTRON ACTIONS
 function showImageOnJumbotron(image) {
 	$("#div-jumbotron-wrapper").append('<img id="img-jumbotron" src="' + image + '" class="img-user-jumbotron rounded-circle" />');

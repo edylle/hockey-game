@@ -26,6 +26,11 @@
 			<a class="navbar-brand" href="#">
 				<img th:src="@{/img/logo.png}" width="30" />
 			</a>
+			<div class="div-question-mark-navbar cursor-pointer"
+			     th:title="#{label.send.question}" data-toggle="tooltip" data-placement="left"
+			     onclick="sendQuestion()">
+				<i class="fa fa-question-circle i-question-mark-navbar" aria-hidden="true"></i>
+			</div>
 		</nav>
 
 		<div class="container-fluid container-content">
