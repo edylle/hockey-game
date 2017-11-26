@@ -6,11 +6,23 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/bootstrap/bootstrap.min.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/font-awesome-4.7.0/css/font-awesome.min.css}"/>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/vendor/jquery.growl.css}"/>
+
+		<script th:inline="javascript">
+			var u1 = [[@{/img/user1.png}]];
+			var u2 = [[@{/img/user2.jpg}]];
+			var u3 = [[@{/img/user3.png}]];
+			var u4 = [[@{/img/user4.png}]];
+			var u5 = [[@{/img/user5.png}]];
+			var u6 = [[@{/img/user6.png}]];
+		</script>
+
+		<script th:src="@{/js/images.js}"></script>
 	</head>
 
 	<body>
 
-		<nav class="navbar navbar-expand-md navbar-dark bg-header fixed-top" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)">
+		<nav class="navbar navbar-expand-md navbar-dark bg-header fixed-top" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);">
 			<a class="navbar-brand" href="#">
 				<img th:src="@{/img/logo.png}" width="30" />
 			</a>
@@ -19,30 +31,78 @@
 		<div class="container-fluid container-content">
 			<div class="row">
 
-				<div class="col-xl-8 col-lg-8 col-sm-12">
-					<h1>BIG SCREEN</h1>
+				<div class="col-xl-8 col-lg-8 col-sm-12 img-jumbotron" style="margin-bottom: 30px;">
+					<div id="div-jumbotron-wrapper" class="text-center">
+						<img th:src="@{/img/jumbotron1.png}" class="img-jumbotron"/>
+					</div>
 				</div>
 
 				<div class="col-xl-4 col-lg-4 col-sm-12">
-					<div class="row" th:each="attention : ${attentions}">
-						<div class="col-sm-2">
-							<p th:text="${attention.seatNumber}"></p>
-						</div>
-						<div class="col-sm-8">
-							<p th:text="${attention.seatFanName}"></p>
-						</div>
-						<div class="col-sm-2">
-							<p th:text="${attention.message}"></p>
+					<div id="div-wrapper-attention-list">
+						<div class="row div-row-attentions" th:each="attention : ${attentions}" th:id="${'attention-' + attention.id}"
+						     th:classappend="${attention.seatNumber}">
+							<div class="col-2 text-center middle-row-attentions-img">
+								<img th:src="@{/img/user1.png}" onload="this.onload=null; this.src=getRandomUser();" width="30" />
+							</div>
+							<div class="col-8 text-left middle-row-attentions-txt">
+								<p th:if="${attention.attentionType eq 'MESSAGE'}"
+								   th:utext="#{label.message.from.seat(${attention.seatNumber})}"></p>
+
+								<p th:if="${attention.attentionType eq 'FILM'}"
+								   th:utext="#{label.film.fan.seat(${attention.seatNumber})}"></p>
+							</div>
+							<div class="col-2 text-center middle-row-attentions-check">
+								<a class="text-success cursor-pointer" data-toggle="modal" data-target="#modal-accept-attention"
+								   th:attr="data-id=${attention.id}, data-accept=true,
+								            data-type=${attention.attentionType},
+								            data-accept-warning=#{message.accept.attention(${attention.seatNumber})},
+								            data-message=${attention.message}"
+								   th:title="#{label.accept.attention}" rel="tooltip" data-placement="top">
+	
+									<i class="fa fa-check" aria-hidden="true"></i>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			
 			</div>
+			
+			<div id="modal-accept-attention" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-label-accept-attention" aria-hidden="true">
+		  		<div class="modal-dialog" role="document">
+
+				  	<div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="modal-label-accept-attention" th:text="#{label.submit.attention}"></h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+
+				      <div class="modal-body">
+				      	<span></span>
+				      </div>
+
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-link cursor-pointer" style="text-decoration: none;"
+				                data-dismiss="modal" th:text="#{label.close}"></button>
+				        <button type="button" class="btn btn-primary cursor-pointer"
+				                th:text="#{label.submit}" onclick="acceptAttention()"></button>
+				      </div>
+				    </div>
+		
+			  </div>
+		</div>
+
 		</div>
 
 		<script th:src="@{/js/vendor/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/js/vendor/bootstrap.bundle.min.js}"></script>
 		<script th:src="@{/js/vendor/sockjs-1.1.0.min.js}"></script>
 		<script th:src="@{/js/vendor/stomp.min.js}"></script>
+		<script th:src="@{/js/vendor/jquery.growl.js}"></script>
+		<script th:src="@{/js/attentionService.js}"></script>
+		<script th:src="@{/js/websocket.js}"></script>
 		<script th:src="@{/js/main.js}"></script>
 
 	</body>
