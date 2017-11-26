@@ -1,3 +1,12 @@
+function evaluateList() {
+	if ($(".div-row-attentions")[0]) {
+		$("#div-empty-attentions").css("display", "none");
+
+	} else {
+		$("#div-empty-attentions").css("display", "block");
+	}
+}
+
 function addAttention(attention) {
 	var rowTitle = "";
 	if (attention.attentionType === "MESSAGE") {
@@ -40,13 +49,4 @@ function addAttention(attention) {
 
 function removeAttentionsFrom(seat) {
 	$("." + seat.username).hide('slow', function(){ $("." + seat.username).remove(); evaluateList(); });
-}
-
-function evaluateList() {
-	if ($(".div-row-attentions")[0]) {
-		$("#div-empty-attentions").css("display", "none");
-
-	} else {
-		$("#div-empty-attentions").css("display", "block");
-	}
 }

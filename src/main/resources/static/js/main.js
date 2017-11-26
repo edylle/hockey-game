@@ -15,7 +15,7 @@ var idAttention;
 var accept;
 var userMsg;
 var userImg; // mocked
-$('#modal-accept-attention').on("show.bs.modal", function(event) {
+$("#modal-accept-attention").on("show.bs.modal", function(event) {
 	idAttention = $(event.relatedTarget).data("id");
 	accept = $(event.relatedTarget).data("accept");
 
@@ -69,7 +69,7 @@ function acceptAttention() {
 
 	response.done(function(e) {
 		$("#attention-" + idAttention).hide("slow", function(){ $("#attention-" + idAttention).remove(); evaluateList(); });
-		$('#modal-accept-attention').modal("hide");
+		$("#modal-accept-attention").modal("hide");
 
 		$("#img-jumbotron").remove();
 		$("#txt-jumbotron").remove();
