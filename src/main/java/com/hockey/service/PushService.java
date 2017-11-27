@@ -39,6 +39,9 @@ public class PushService {
 							   + "\"included_segments\": [\""
 							   + "All"
 			                   + "\"],"
+			                   + "\"headings\": {\"en\": \""
+			                   + title
+			                   + "\"},"
 			                   + "\"contents\": {\"en\": \""
 			                   + message
 			                   + "\"}"
