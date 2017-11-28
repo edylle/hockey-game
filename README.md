@@ -64,7 +64,7 @@ The film action is meant for you to call some attention of a camera available in
 
 ![enter image description here](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/04.jpg)
 
-Last but not least, of course it is fully responsible :)
+Last but not least, of course it is fully responsive :)
 
 ![responsible page](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/05.jpg)
 
