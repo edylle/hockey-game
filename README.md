@@ -36,7 +36,7 @@ In order to run the build, enter the following command line in terminal (make su
 
     java -jar hockey-game.jar
 
-Once the system is up and running, if you haven't made any changes in applications.properties, it is possible to access it with by the URI http://localhost:8080/hockey
+Once the system is up and running, if you haven't made any changes in applications.properties, it is possible to access it by the URI http://localhost:8080/hockey
 
 ## Home page explanation
 
@@ -44,15 +44,15 @@ This is the home page of the system:
 
 ![Main page](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/01.jpg)
 
-If you click on the question mark located at the top right corner of the page, it will send some random hockey related question to all mobile Android applications. If you answer the questions correctly, you will earn points that can by spent in jumbotron actions.
+If you click on the question mark located at the top right corner of the page, it will send some random hockey related question to all mobile Android applications. If you answer the questions correctly, you will earn points that can be spent in jumbotron actions.
 <br />
 <br />
-I tried to simulate a Jumbotron on that page. On right corner of the page is where the list of actions made by people on the stadium is presented.
+I tried to simulate a Jumbotron on that page. On the right side of the page is where the list of actions made by people on the stadium is presented.
 <br />
-There are two options of actions (or attentions) that users can call from the Android application: to be filmed by some camera guy and send a message to the audience.
+There are two options of actions (or attentions) that users can call from the Android application: to be filmed by some camera guy and/or send a message to the audience.
 <br />
 <br />
-If you try to accept a message action call, first you have to verify if there's no inappropriate text in it:
+If you try to accept a message action call, first you have to verify if there is no inappropriate text in it:
 
  ![Confirm message modal](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/02.jpg)
  
