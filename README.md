@@ -36,7 +36,7 @@ In order to run the build, enter the following command line in terminal (make su
 
     java -jar hockey-game.jar
 
-Once the system is up and running, you haven't made any changes in applications.properties, it is possible to access it with by the URI http://localhost:8080/hockey
+Once the system is up and running, if you haven't made any changes in applications.properties, it is possible to access it with by the URI http://localhost:8080/hockey
 
 ## Home page explanation
 
