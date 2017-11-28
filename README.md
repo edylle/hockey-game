@@ -42,7 +42,7 @@ Once the system is up and running, you haven't made any changes in applications.
 
 This is the home page of the system:
 
-![Main page](https://github.com/edylle/hockey-game/src/main/resources/static/img/home-page-prints/01.jpg)
+![Main page](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/01.jpg)
 
 If you click on the question mark located at the top right corner of the page, it will send some random hockey related question to all mobile Android applications. If you answer the questions correctly, you will earn points that can by spent in jumbotron actions.
 <br />
@@ -54,19 +54,19 @@ There are two options of actions (or attentions) that users can call from the An
 <br />
 If you try to accept a message action call, first you have to verify if there's no inappropriate text in it:
 
- ![Confirm message modal](https://github.com/edylle/hockey-game/src/main/resources/static/img/home-page-prints/02.jpg)
+ ![Confirm message modal](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/02.jpg)
  
 If everything's alright, you may accept it and the message is displayed in Jumbotron so everyone in the stadium can see it.
  
- ![Message displayed in jumbotron](https://github.com/edylle/hockey-game/src/main/resources/static/img/home-page-prints/03.jpg)
+ ![Message displayed in jumbotron](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/03.jpg)
 
 The film action is meant for you to call some attention of a camera available in the stadium:
 
-![enter image description here](https://github.com/edylle/hockey-game/src/main/resources/static/img/home-page-prints/04.jpg)
+![enter image description here](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/04.jpg)
 
 Last but not least, of course it is fully responsible :)
 
-![responsible page](https://github.com/edylle/hockey-game/src/main/resources/static/img/home-page-prints/05.jpg)
+![responsible page](https://github.com/edylle/hockey-game/blob/master/src/main/resources/static/img/home-page-prints/05.jpg)
 
 ## API REST endpoints
 	Important: All POST requests need authentication which is AuthType Basic seatNumber:seatNumber by default.
