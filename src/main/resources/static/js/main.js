@@ -6,9 +6,15 @@ $(function() {
 var imgTimer;
 var txtTimer;
 
-function showLoading() {}
+function showLoading() {
+	$(".loading-gif").css("display", "block");
+}
 
-function hideLoading() {}
+function hideLoading() {
+	$(".loading-gif").fadeOut("slow", function() {
+		$(".loading-gif").css("display", "none");
+	});
+}
 
 // MODALS
 var idAttention;

@@ -69,3 +69,9 @@
 .display-none {
 	display: none;
 }
+
+.loading-gif {
+	width: 42px;
+	margin: auto;
+	display: none;
+}
