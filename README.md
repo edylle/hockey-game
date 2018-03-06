@@ -1,5 +1,8 @@
 
 # Hockey Game!
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6a3a544fc304773a09881f3424ef77a)](https://app.codacy.com/app/edylle/hockey-game?utm_source=github.com&utm_medium=referral&utm_content=edylle/hockey-game&utm_campaign=badger)
+
 This project is part of a challenge from GSL Group for VanHackathon 4.0!
 <br/>
 This is the Java server code repository. If you want to go to the dark side, please visit the mobile application repository: [Ionic Cordova repositoy page.](https://github.com/vinnipedrosa/hockey-game-mobile)
